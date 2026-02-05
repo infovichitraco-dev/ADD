@@ -3,334 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Calendar | Interior Design Firm</title>
+    <title>ADD | Visual Strategy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
-
         :root {
-            /* Extracted Brand Palette */
-            --bg-color: #Fdfcfb; /* Very light off-white */
+            /* LUXURY PALETTE */
+            --bg-color: #F7F5F2;  /* Raw Silk */
             --card-bg: #FFFFFF;
-            --text-main: #5D4037; /* Dark Mocha */
-            --text-light: #8D6E63;
-            --accent-sand: #E6CDBF;
-            --accent-taupe: #C5A08A;
-            --accent-brown: #8D6E63; 
-            --accent-dark: #4E342E;
+            --text-dark: #2A1B18; /* Deep Espresso - High Contrast */
+            --text-accent: #8C7B75; /* Warm Taupe */
+            --gold-accent: #D4AF37; /* Muted Gold */
+            --border-color: #EBE6E1;
         }
 
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Manrope', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-main);
+            color: var(--text-dark);
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            opacity: 0;
+            animation: fadeInPage 1.5s ease-out forwards;
         }
 
-        /* Header & Logo */
+        @keyframes fadeInPage {
+            to { opacity: 1; }
+        }
+
+        /* --- HEADER SECTION --- */
         header {
             text-align: center;
-            padding: 60px 20px 40px;
-            width: 100%;
+            padding: 100px 20px 60px;
             max-width: 800px;
+            margin: 0 auto;
+            position: relative;
         }
 
-        .logo-container {
-            width: 150px; /* Adjust size as needed */
-            height: auto;
-            margin: 0 auto 20px;
+        header::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 40px;
+            background: var(--text-dark);
+            margin: 0 auto 30px;
         }
 
-        .logo-container img {
-            width: 100%;
+        .logo-area img {
+            max-width: 180px;
             height: auto;
-            object-fit: contain;
+            display: block;
+            margin: 0 auto 30px;
+            filter: grayscale(100%) contrast(120%); /* Makes any logo look sharper/black & white */
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 3.5rem;
             font-weight: 400;
-            letter-spacing: 2px;
-            margin: 0;
-            color: var(--accent-dark);
-            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin: 0 0 15px 0;
+            color: var(--text-dark);
         }
 
-        p.subtitle {
-            font-size: 0.9rem;
-            letter-spacing: 1.5px;
-            color: var(--text-light);
-            margin-top: 10px;
+        .subtitle {
+            font-size: 0.85rem;
             text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--text-accent);
+            font-weight: 600;
         }
 
-        /* The Grid */
+        /* --- THE INSTAGRAM GRID --- */
+        .grid-wrapper {
+            max-width: 935px; /* Exact max-width of Instagram Desktop */
+            margin: 0 auto 100px;
+            padding: 20px;
+        }
+
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Forces 3 per line */
-            gap: 20px;
-            max-width: 1000px;
-            padding: 20px;
-            margin-bottom: 80px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px; /* More breathing room than standard insta */
         }
 
-        /* Card Styling */
+        /* --- CARD DESIGN --- */
         .card {
             background: var(--card-bg);
-            border: 1px solid rgba(0,0,0,0.03);
-            padding: 30px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
+            aspect-ratio: 1 / 1; /* Forces Perfect Square */
             position: relative;
-            box-shadow: 0 10px 30px -10px rgba(141, 110, 99, 0.1);
+            border: 1px solid white;
+            box-shadow: 0 20px 40px -15px rgba(42, 27, 24, 0.05);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            min-height: 250px;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px -10px rgba(141, 110, 99, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -15px rgba(42, 27, 24, 0.12);
+            border-color: var(--text-accent);
         }
 
-        /* Typography inside cards */
-        .post-number {
-            font-size: 0.7rem;
+        /* Aesthetic Numbering */
+        .card-meta {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #E0D8D6;
+            transition: color 0.3s;
+        }
+
+        .card:hover .card-meta {
+            color: var(--text-dark);
+        }
+
+        /* Content Styling */
+        .tag {
+            font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--accent-taupe);
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .post-type {
-            display: inline-block;
-            padding: 6px 12px;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
-            border-radius: 50px;
+            border: 1px solid var(--text-accent);
+            padding: 5px 10px;
+            border-radius: 0; /* Sharp edges for luxury */
+            color: var(--text-accent);
             margin-bottom: 20px;
+            background: transparent;
         }
 
-        .type-reel {
-            background-color: var(--accent-dark);
-            color: white;
-        }
-
-        .type-post {
-            background-color: var(--accent-sand);
-            color: var(--accent-dark);
-        }
+        .tag.reel { background-color: var(--text-dark); color: white; border-color: var(--text-dark); }
 
         .card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.4rem;
             margin: 0 0 10px 0;
-            font-weight: 600;
-            color: var(--text-main);
+            color: var(--text-dark);
+            line-height: 1.2;
+            font-weight: 500;
         }
 
         .card p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             line-height: 1.6;
-            color: var(--text-light);
-            font-weight: 300;
+            color: #6D5E59;
+            margin: 0;
+            max-width: 90%;
+            font-weight: 400;
         }
 
-        .grid-label {
+        /* Visual Separators for Rows */
+        .row-label {
             grid-column: 1 / -1;
             text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: var(--accent-taupe);
-            margin-top: 30px;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--accent-sand);
-            line-height: 0.1em;
-        }
-        
-        .grid-label span {
-            background: var(--bg-color);
-            padding: 0 15px;
+            margin: 60px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0.5;
         }
 
-        /* Mobile Response */
+        .row-label span {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+
+        .row-label::before, .row-label::after {
+            content: '';
+            height: 1px;
+            width: 50px;
+            background-color: var(--text-dark);
+        }
+
+        /* --- MOBILE --- */
         @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
             .grid-container {
-                grid-template-columns: 1fr; /* Stack on mobile for readability */
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
-            .grid-label {
-                display: none;
-            }
+            .card { aspect-ratio: auto; min-height: 250px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Client Logo" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
-            <h2 id="alt-logo" style="display:none; font-family:'Playfair Display';">CLIENT LOGO</h2>
+        <div class="logo-area">
+            <img src="logo.png" alt="ADD Logo">
         </div>
-        <h1>Month 01 Content</h1>
-        <p class="subtitle">Aesthetic Direction & Strategy</p>
+        <h1>Visual Narrative</h1>
+        <p class="subtitle">Month 01 • Curated Strategy</p>
     </header>
 
-    <div class="grid-container">
+    <div class="grid-wrapper">
+        <div class="grid-container">
 
-        <div class="grid-label"><span>Row 1: The Process</span></div>
-        
-        <div class="card">
-            <div>
-                <span class="post-number">01</span>
-                <span class="post-type type-reel">Reel</span>
-                <h3>Architect's Hands</h3>
-                <p>Fast-paced video: Sketching, moving models, hands at work. Focus on movement and craft.</p>
+            <div class="row-label"><span>The Process</span></div>
+
+            <div class="card">
+                <span class="card-meta">01</span>
+                <span class="tag reel">Reel</span>
+                <h3>Architectural<br>Motion</h3>
+                <p>Fast-paced cuts: Sketching, modeling, hands at work. Pure craft.</p>
             </div>
-        </div>
 
-        <div class="card">
-            <div>
-                <span class="post-number">02</span>
-                <span class="post-type type-post">Carousel</span>
-                <h3>Evolution of Design</h3>
-                <p>Idea &rarr; Sketch &rarr; Render &rarr; Model &rarr; Execution.</p>
+            <div class="card">
+                <span class="card-meta">02</span>
+                <span class="tag">Carousel</span>
+                <h3>From Mind<br>to Matter</h3>
+                <p>The Journey: Idea → Sketch → Render → Execution.</p>
             </div>
-        </div>
 
-        <div class="card">
-            <div>
-                <span class="post-number">03</span>
-                <span class="post-type type-reel">Reel</span>
-                <h3>Intro: ADD</h3>
-                <p>Voiceover video introducing "ADD". Scripted narrative.</p>
+            <div class="card">
+                <span class="card-meta">03</span>
+                <span class="tag reel">Reel</span>
+                <h3>Identity:<br>ADD</h3>
+                <p>Cinematic voiceover. Introducing the brand philosophy.</p>
             </div>
-        </div>
 
-        <div class="grid-label"><span>Row 2: Founder 1</span></div>
+            <div class="row-label"><span>Founder 01</span></div>
 
-        <div class="card">
-            <div>
-                <span class="post-number">04</span>
-                <span class="post-type type-reel">Reel</span>
-                <h3>Founder 1: Intro</h3>
-                <p>Voiceover narrative introducing the first founder.</p>
+            <div class="card">
+                <span class="card-meta">04</span>
+                <span class="tag reel">Reel</span>
+                <h3>The Visionary</h3>
+                <p>Introduction to Founder 1. Narrative voiceover.</p>
             </div>
-        </div>
 
-        <div class="card">
-            <div>
-                <span class="post-number">05</span>
-                <span class="post-type type-post">Static</span>
-                <h3>Founder 1: Portrait</h3>
-                <p>High-end photography with graphics matching the feed aesthetic.</p>
+            <div class="card">
+                <span class="card-meta">05</span>
+                <span class="tag">Portrait</span>
+                <h3>Founder 1</h3>
+                <p>Editorial photography. Minimalist graphics.</p>
             </div>
-        </div>
 
-        <div class="card">
-            <div>
-                <span class="post-number">06</span>
-                <span class="post-type type-reel">Reel</span>
-                <h3>Founder 1: POV</h3>
-                <p>Talking about their favorite project. Personal insight.</p>
+            <div class="card">
+                <span class="card-meta">06</span>
+                <span class="tag reel">Reel</span>
+                <h3>Perspective</h3>
+                <p>Founder 1 discusses their favorite project details.</p>
             </div>
-        </div>
 
-        <div class="grid-label"><span>Row 3: Founder 2</span></div>
+            <div class="row-label"><span>Founder 02</span></div>
 
-        <div class="card">
-            <div>
-                <span class="post-number">07</span>
-                <span class="post-type type-reel">Reel</span>
-                <h3>Founder 2: Intro</h3>
-                <p>Voiceover narrative introducing the second founder.</p>
+            <div class="card">
+                <span class="card-meta">07</span>
+                <span class="tag reel">Reel</span>
+                <h3>The Architect</h3>
+                <p>Introduction to Founder 2. Narrative voiceover.</p>
             </div>
-        </div>
 
-        <div class="card">
-            <div>
-                <span class="post-number">08</span>
-                <span class="post-type type-post">Static</span>
-                <h3>Founder 2: Portrait</h3>
-                <p>High-end photography with graphics matching the feed aesthetic.</p>
+            <div class="card">
+                <span class="card-meta">08</span>
+                <span class="tag">Portrait</span>
+                <h3>Founder 2</h3>
+                <p>Editorial photography. Minimalist graphics.</p>
             </div>
-        </div>
 
-        <div class="card">
-            <div>
-                <span class="post-number">09</span>
-                <span class="post-type type-reel">Reel</span>
-                <h3>Founder 2: POV</h3>
-                <p>Talking about their favorite project. Personal insight.</p>
+            <div class="card">
+                <span class="card-meta">09</span>
+                <span class="tag reel">Reel</span>
+                <h3>Perspective</h3>
+                <p>Founder 2 discusses their favorite project details.</p>
             </div>
-        </div>
 
-        <div class="grid-label"><span>Row 4: Founder 3</span></div>
+            <div class="row-label"><span>Founder 03</span></div>
 
-        <div class="card">
-            <div>
-                <span class="post-number">10</span>
-                <span class="post-type type-reel">Reel</span>
-                <h3>Founder 3: Intro</h3>
-                <p>Voiceover narrative introducing the third founder.</p>
+            <div class="card">
+                <span class="card-meta">10</span>
+                <span class="tag reel">Reel</span>
+                <h3>The Designer</h3>
+                <p>Introduction to Founder 3. Narrative voiceover.</p>
             </div>
-        </div>
 
-        <div class="card">
-            <div>
-                <span class="post-number">11</span>
-                <span class="post-type type-post">Static</span>
-                <h3>Founder 3: Portrait</h3>
-                <p>High-end photography with graphics matching the feed aesthetic.</p>
+            <div class="card">
+                <span class="card-meta">11</span>
+                <span class="tag">Portrait</span>
+                <h3>Founder 3</h3>
+                <p>Editorial photography. Minimalist graphics.</p>
             </div>
-        </div>
 
-        <div class="card">
-            <div>
-                <span class="post-number">12</span>
-                <span class="post-type type-reel">Reel</span>
-                <h3>Founder 3: POV</h3>
-                <p>Talking about their favorite project. Personal insight.</p>
+            <div class="card">
+                <span class="card-meta">12</span>
+                <span class="tag reel">Reel</span>
+                <h3>Perspective</h3>
+                <p>Founder 3 discusses their favorite project details.</p>
             </div>
-        </div>
 
-        <div class="grid-label"><span>Row 5: The Team Statement</span></div>
+            <div class="row-label"><span>The Statement</span></div>
 
-        <div class="card" style="border-bottom: 5px solid var(--accent-dark);">
-            <div>
-                <span class="post-number">13</span>
-                <span class="post-type type-reel">Reel</span>
-                <h3>Team 1 Intro</h3>
-                <p>Cover Photo Text: <br><strong style="font-size:1.5rem">ADD</strong></p>
+            <div class="card" style="background: #2A1B18; color: white;">
+                <span class="card-meta" style="color: rgba(255,255,255,0.2);">13</span>
+                <span class="tag reel" style="background: white; color: #2A1B18; border-color: white;">Reel</span>
+                <h3 style="color: white; font-size: 2rem;">ADD</h3>
+                <p style="color: rgba(255,255,255,0.7);">Team Intro Part 1</p>
             </div>
-        </div>
 
-        <div class="card" style="border-bottom: 5px solid var(--accent-dark);">
-            <div>
-                <span class="post-number">14</span>
-                <span class="post-type type-post">Graphic</span>
-                <h3>Typography Post</h3>
-                <p>Graphic Text: <br><strong style="font-size:1.5rem">ARE</strong></p>
+            <div class="card">
+                <span class="card-meta">14</span>
+                <span class="tag">Graphic</span>
+                <h3 style="font-size: 3rem; font-style: italic;">ARE</h3>
+                <p>Visual Typography Connector</p>
             </div>
-        </div>
 
-        <div class="card" style="border-bottom: 5px solid var(--accent-dark);">
-            <div>
-                <span class="post-number">15</span>
-                <span class="post-type type-reel">Reel</span>
-                <h3>Team 2 Intro</h3>
-                <p>Cover Photo Text: <br><strong style="font-size:1.5rem">WE ARE</strong></p>
+            <div class="card" style="background: #2A1B18; color: white;">
+                <span class="card-meta" style="color: rgba(255,255,255,0.2);">15</span>
+                <span class="tag reel" style="background: white; color: #2A1B18; border-color: white;">Reel</span>
+                <h3 style="color: white; font-size: 2rem;">WE ARE</h3>
+                <p style="color: rgba(255,255,255,0.7);">Team Intro Part 2</p>
             </div>
-        </div>
 
+        </div>
     </div>
 
 </body>
