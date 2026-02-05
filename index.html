@@ -6,313 +6,380 @@
     <title>ADD | Visual Strategy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
             /* LUXURY PALETTE */
-            --bg-color: #F2F0EB;  /* Warm Stone */
-            --card-bg: #FFFFFF;
-            --text-dark: #1A1A1A; /* Charcoal */
-            --text-accent: #928C81; /* Muted Olive-Grey */
-            --gold-accent: #C2B39B; 
+            --bg-color: #F9F8F6;  
+            --text-main: #1a1a1a; 
+            --gold: #C5A08A;
+            --overlay-bg: rgba(42, 27, 24, 0.85); /* Dark espresso overlay */
         }
 
         body {
             font-family: 'Manrope', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-dark);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-        }
-
-        /* --- HERO COVER SECTION --- */
-        .hero {
-            /* Placeholder Luxury Interior Image */
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            height: 70vh; /* Takes up 70% of the screen */
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+        }
+
+        /* --- HEADER --- */
+        header {
             text-align: center;
-            color: white;
-            position: relative;
-            margin-bottom: 80px;
+            padding: 80px 20px 50px;
+            width: 100%;
         }
 
-        /* Add your logic for the logo here */
-        .hero-logo {
-            width: 180px;
-            margin-bottom: 20px;
-            filter: invert(1) brightness(100); /* Forces dark logos to be white */
+        .logo-area img {
+            height: 40px;
+            width: auto;
+            margin-bottom: 25px;
+            opacity: 0.8;
         }
 
-        .hero h1 {
+        h1 {
             font-family: 'Bodoni Moda', serif;
-            font-size: 4rem;
+            font-size: 2.5rem;
             font-weight: 400;
-            letter-spacing: -2px;
+            letter-spacing: -0.5px;
+            color: #333;
             margin: 0;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        .hero p {
-            font-size: 0.9rem;
-            letter-spacing: 5px;
+        .subtitle {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-top: 15px;
-            opacity: 0.9;
+            color: #888;
+            margin-top: 10px;
         }
 
-        /* --- THE GRID WRAPPER --- */
-        .grid-wrapper {
-            max-width: 935px;
-            margin: 0 auto 100px;
-            padding: 20px;
+        /* --- GRID --- */
+        .phone-frame {
+            background: white;
+            padding: 20px 20px 40px 20px;
+            border-radius: 20px; /* Subtle curve like a screen */
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 100px;
+        }
+
+        .grid-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px 30px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.2rem;
         }
 
         .grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3px; /* Tighter gap for that "Seamless" look */
+            gap: 5px; /* Tight gap like Instagram */
         }
 
-        /* --- CARD DESIGN --- */
+        /* --- POST CARD --- */
         .card {
-            background: var(--card-bg);
-            aspect-ratio: 1 / 1;
             position: relative;
+            width: 100%;
+            padding-top: 100%; /* Forces 1:1 Aspect Ratio (Square) */
+            overflow: hidden;
+            background: #eee;
+            cursor: pointer;
+        }
+
+        /* The Image */
+        .card img.cover-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        /* Special Text Overlays for the "WE ARE ADD" posts */
+        .card .text-overlay-graphic {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .card .text-overlay-graphic h2 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2vw; /* Responsive font size */
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* The Hover Details */
+        .details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay-bg);
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 25px;
             text-align: center;
-            transition: all 0.4s ease;
-            cursor: default;
+            padding: 15px;
+            box-sizing: border-box;
+            z-index: 5;
         }
 
-        /* Hover Effect: Darken slightly like a pressed button */
-        .card:hover {
-            z-index: 2;
-            transform: scale(1.02);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        .card:hover .details {
+            opacity: 1;
         }
 
-        /* Aesthetic Numbering (Top Right now) */
-        .card-meta {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-family: 'Bodoni Moda', serif;
-            font-size: 1rem;
-            color: #E0E0E0;
+        .card:hover img.cover-img {
+            transform: scale(1.05);
         }
 
-        .card:hover .card-meta { color: var(--text-dark); }
-
-        /* Label Logic */
-        .tag {
-            font-size: 0.55rem;
-            text-transform: uppercase;
+        /* Text inside hover */
+        .post-num {
+            font-size: 0.6rem;
             letter-spacing: 2px;
-            border-bottom: 1px solid var(--text-accent);
-            padding-bottom: 3px;
-            color: var(--text-accent);
+            opacity: 0.7;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .type-badge {
+            font-size: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 4px 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 15px;
         }
 
-        .card h3 {
+        .details h3 {
             font-family: 'Bodoni Moda', serif;
-            font-size: 1.3rem;
-            margin: 0 0 10px 0;
-            color: var(--text-dark);
-            line-height: 1.2;
+            font-size: 1.1rem;
+            margin: 0 0 5px 0;
+            font-weight: 400;
         }
 
-        .card p {
-            font-size: 0.75rem;
-            line-height: 1.6;
-            color: #666;
-            margin: 0;
-            width: 85%;
+        .details p {
+            font-size: 0.7rem;
+            line-height: 1.4;
+            opacity: 0.8;
+            max-width: 90%;
         }
-
-        /* Row Separators */
-        .row-label {
-            grid-column: 1 / -1;
-            text-align: center;
-            margin: 60px 0 20px;
-            font-family: 'Bodoni Moda', serif;
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            font-style: italic;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .row-label::before, .row-label::after {
-            content: '';
-            height: 1px;
-            width: 80px;
-            background: #CCC;
-        }
-
-        /* --- SPECIAL CARDS --- */
-        /* Dark Theme for the "ADD" branding */
-        .dark-theme {
-            background-color: #1a1a1a;
-            color: white;
-        }
-        .dark-theme h3, .dark-theme .card-meta { color: white !important; }
-        .dark-theme p { color: #888; }
-        .dark-theme .tag { border-color: #555; color: #888; }
-
 
         /* --- MOBILE --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
             .grid-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 2px;
             }
-            .card { border: 1px solid #eee; }
+            .card .text-overlay-graphic h2 {
+                font-size: 1rem;
+            }
+            .phone-frame {
+                padding: 10px;
+                border-radius: 0;
+                box-shadow: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <img src="logo.png" alt="ADD" class="hero-logo">
+    <header>
+        <div class="logo-area">
+             <img src="logo.png" alt="ADD" style="display: block; margin: 0 auto; filter: contrast(0) sepia(100%) hue-rotate(350deg) saturate(0.5);">
+        </div>
         <h1>Visual Narrative</h1>
-        <p>Month 01 Strategy</p>
-    </div>
+        <p class="subtitle">Month 01 Preview</p>
+    </header>
 
-    <div class="grid-wrapper">
+    <div class="phone-frame">
+        <div class="grid-header">
+            <span>Grid Preview</span>
+            <span style="font-family:'Manrope'; font-size:0.8rem; letter-spacing:1px;">ADD INTERIORS</span>
+        </div>
+
         <div class="grid-container">
 
-            <div class="row-label"><span>05. The Statement</span></div>
-
-            <div class="card dark-theme">
-                <span class="card-meta">15</span>
-                <span class="tag">Reel</span>
-                <h3>WE ARE</h3>
-                <p>Team Intro Part 2. Bold typography cover.</p>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Interior">
+                <div class="text-overlay-graphic"><h2>WE ARE</h2></div>
+                <div class="details">
+                    <span class="post-num">Post 15</span>
+                    <span class="type-badge">Reel</span>
+                    <h3>Team Intro 2</h3>
+                    <p>Scripted voiceover introducing the team culture.</p>
+                </div>
             </div>
 
             <div class="card">
-                <span class="card-meta">14</span>
-                <span class="tag">Graphic</span>
-                <h3 style="font-size: 3rem;">ARE</h3>
-                <p>Grid Connector Graphic</p>
-            </div>
-
-            <div class="card dark-theme">
-                <span class="card-meta">13</span>
-                <span class="tag">Reel</span>
-                <h3>ADD</h3>
-                <p>Team Intro Part 1. Bold typography cover.</p>
-            </div>
-
-
-            <div class="row-label"><span>04. Founder Three</span></div>
-
-            <div class="card">
-                <span class="card-meta">12</span>
-                <span class="tag">Reel</span>
-                <h3>Perspective</h3>
-                <p>Founder 3: Project POV & Insight.</p>
+                <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Texture">
+                <div class="text-overlay-graphic"><h2>ARE</h2></div>
+                <div class="details">
+                    <span class="post-num">Post 14</span>
+                    <span class="type-badge">Graphic</span>
+                    <h3>Connector</h3>
+                    <p>Typography graphic linking the grid visually.</p>
+                </div>
             </div>
 
             <div class="card">
-                <span class="card-meta">11</span>
-                <span class="tag">Portrait</span>
-                <h3>The Portrait</h3>
-                <p>High-fashion editorial shot of Founder 3.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-meta">10</span>
-                <span class="tag">Reel</span>
-                <h3>The Intro</h3>
-                <p>Cinematic voiceover introduction.</p>
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Interior">
+                <div class="text-overlay-graphic"><h2>ADD</h2></div>
+                <div class="details">
+                    <span class="post-num">Post 13</span>
+                    <span class="type-badge">Reel</span>
+                    <h3>Team Intro 1</h3>
+                    <p>Scripted voiceover. Bold brand introduction.</p>
+                </div>
             </div>
 
 
-            <div class="row-label"><span>03. Founder Two</span></div>
-
             <div class="card">
-                <span class="card-meta">09</span>
-                <span class="tag">Reel</span>
-                <h3>Perspective</h3>
-                <p>Founder 2: Project POV & Insight.</p>
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Project">
+                <div class="details">
+                    <span class="post-num">Post 12</span>
+                    <span class="type-badge">Reel</span>
+                    <h3>POV: Founder 3</h3>
+                    <p>Discussing favorite project details.</p>
+                </div>
             </div>
 
             <div class="card">
-                <span class="card-meta">08</span>
-                <span class="tag">Portrait</span>
-                <h3>The Portrait</h3>
-                <p>High-fashion editorial shot of Founder 2.</p>
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Portrait">
+                <div class="details">
+                    <span class="post-num">Post 11</span>
+                    <span class="type-badge">Static</span>
+                    <h3>Portrait</h3>
+                    <p>Founder 3 Editorial Shot.</p>
+                </div>
             </div>
 
             <div class="card">
-                <span class="card-meta">07</span>
-                <span class="tag">Reel</span>
-                <h3>The Intro</h3>
-                <p>Cinematic voiceover introduction.</p>
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Architecture">
+                <div class="details">
+                    <span class="post-num">Post 10</span>
+                    <span class="type-badge">Reel</span>
+                    <h3>Intro: Founder 3</h3>
+                    <p>Voiceover narrative background story.</p>
+                </div>
             </div>
 
 
-            <div class="row-label"><span>02. Founder One</span></div>
-
             <div class="card">
-                <span class="card-meta">06</span>
-                <span class="tag">Reel</span>
-                <h3>Perspective</h3>
-                <p>Founder 1: Project POV & Insight.</p>
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Project">
+                <div class="details">
+                    <span class="post-num">Post 09</span>
+                    <span class="type-badge">Reel</span>
+                    <h3>POV: Founder 2</h3>
+                    <p>Discussing favorite project details.</p>
+                </div>
             </div>
 
             <div class="card">
-                <span class="card-meta">05</span>
-                <span class="tag">Portrait</span>
-                <h3>The Portrait</h3>
-                <p>High-fashion editorial shot of Founder 1.</p>
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Portrait">
+                <div class="details">
+                    <span class="post-num">Post 08</span>
+                    <span class="type-badge">Static</span>
+                    <h3>Portrait</h3>
+                    <p>Founder 2 Editorial Shot.</p>
+                </div>
             </div>
 
             <div class="card">
-                <span class="card-meta">04</span>
-                <span class="tag">Reel</span>
-                <h3>The Intro</h3>
-                <p>Cinematic voiceover introduction.</p>
+                <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Architecture">
+                <div class="details">
+                    <span class="post-num">Post 07</span>
+                    <span class="type-badge">Reel</span>
+                    <h3>Intro: Founder 2</h3>
+                    <p>Voiceover narrative background story.</p>
+                </div>
             </div>
 
 
-            <div class="row-label"><span>01. The Process</span></div>
-
             <div class="card">
-                <span class="card-meta">03</span>
-                <span class="tag">Reel</span>
-                <h3>Identity</h3>
-                <p>Voiceover manifesto introducing "ADD".</p>
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Project">
+                <div class="details">
+                    <span class="post-num">Post 06</span>
+                    <span class="type-badge">Reel</span>
+                    <h3>POV: Founder 1</h3>
+                    <p>Discussing favorite project details.</p>
+                </div>
             </div>
 
             <div class="card">
-                <span class="card-meta">02</span>
-                <span class="tag">Carousel</span>
-                <h3>Evolution</h3>
-                <p>Sketch → Render → Reality.</p>
+                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Portrait">
+                <div class="details">
+                    <span class="post-num">Post 05</span>
+                    <span class="type-badge">Static</span>
+                    <h3>Portrait</h3>
+                    <p>Founder 1 Editorial Shot.</p>
+                </div>
             </div>
 
             <div class="card">
-                <span class="card-meta">01</span>
-                <span class="tag">Reel</span>
-                <h3>Motion</h3>
-                <p>Architectural hands at work. Fast paced.</p>
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Architecture">
+                <div class="details">
+                    <span class="post-num">Post 04</span>
+                    <span class="type-badge">Reel</span>
+                    <h3>Intro: Founder 1</h3>
+                    <p>Voiceover narrative background story.</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Concept">
+                <div class="details">
+                    <span class="post-num">Post 03</span>
+                    <span class="type-badge">Reel</span>
+                    <h3>Intro to ADD</h3>
+                    <p>Scripted narrative on brand philosophy.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Sketch">
+                <div class="details">
+                    <span class="post-num">Post 02</span>
+                    <span class="type-badge">Carousel</span>
+                    <h3>The Evolution</h3>
+                    <p>Idea → Sketch → Render → Execution.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=600&auto=format&fit=crop" class="cover-img" alt="Hands">
+                <div class="details">
+                    <span class="post-num">Post 01</span>
+                    <span class="type-badge">Reel</span>
+                    <h3>The Hands</h3>
+                    <p>Fast-paced sketching and modeling motion.</p>
+                </div>
             </div>
 
         </div>
