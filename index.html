@@ -11,12 +11,11 @@
     <style>
         :root {
             /* LUXURY PALETTE */
-            --bg-color: #F7F5F2;  /* Raw Silk */
+            --bg-color: #F2F0EB;  /* Warm Stone */
             --card-bg: #FFFFFF;
-            --text-dark: #2A1B18; /* Deep Espresso - High Contrast */
-            --text-accent: #8C7B75; /* Warm Taupe */
-            --gold-accent: #D4AF37; /* Muted Gold */
-            --border-color: #EBE6E1;
+            --text-dark: #1A1A1A; /* Charcoal */
+            --text-accent: #928C81; /* Muted Olive-Grey */
+            --gold-accent: #C2B39B; 
         }
 
         body {
@@ -25,61 +24,52 @@
             color: var(--text-dark);
             margin: 0;
             padding: 0;
-            opacity: 0;
-            animation: fadeInPage 1.5s ease-out forwards;
         }
 
-        @keyframes fadeInPage {
-            to { opacity: 1; }
-        }
-
-        /* --- HEADER SECTION --- */
-        header {
+        /* --- HERO COVER SECTION --- */
+        .hero {
+            /* Placeholder Luxury Interior Image */
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 70vh; /* Takes up 70% of the screen */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 100px 20px 60px;
-            max-width: 800px;
-            margin: 0 auto;
+            color: white;
             position: relative;
+            margin-bottom: 80px;
         }
 
-        header::after {
-            content: '';
-            display: block;
-            width: 1px;
-            height: 40px;
-            background: var(--text-dark);
-            margin: 0 auto 30px;
+        /* Add your logic for the logo here */
+        .hero-logo {
+            width: 180px;
+            margin-bottom: 20px;
+            filter: invert(1) brightness(100); /* Forces dark logos to be white */
         }
 
-        .logo-area img {
-            max-width: 180px;
-            height: auto;
-            display: block;
-            margin: 0 auto 30px;
-            filter: grayscale(100%) contrast(120%); /* Makes any logo look sharper/black & white */
-        }
-
-        h1 {
+        .hero h1 {
             font-family: 'Bodoni Moda', serif;
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 400;
-            letter-spacing: -1px;
-            line-height: 1.1;
-            margin: 0 0 15px 0;
-            color: var(--text-dark);
+            letter-spacing: -2px;
+            margin: 0;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        .subtitle {
-            font-size: 0.85rem;
+        .hero p {
+            font-size: 0.9rem;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--text-accent);
-            font-weight: 600;
+            margin-top: 15px;
+            opacity: 0.9;
         }
 
-        /* --- THE INSTAGRAM GRID --- */
+        /* --- THE GRID WRAPPER --- */
         .grid-wrapper {
-            max-width: 935px; /* Exact max-width of Instagram Desktop */
+            max-width: 935px;
             margin: 0 auto 100px;
             padding: 20px;
         }
@@ -87,244 +77,242 @@
         .grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px; /* More breathing room than standard insta */
+            gap: 3px; /* Tighter gap for that "Seamless" look */
         }
 
         /* --- CARD DESIGN --- */
         .card {
             background: var(--card-bg);
-            aspect-ratio: 1 / 1; /* Forces Perfect Square */
+            aspect-ratio: 1 / 1;
             position: relative;
-            border: 1px solid white;
-            box-shadow: 0 20px 40px -15px rgba(42, 27, 24, 0.05);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 25px;
             text-align: center;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: default;
         }
 
+        /* Hover Effect: Darken slightly like a pressed button */
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 60px -15px rgba(42, 27, 24, 0.12);
-            border-color: var(--text-accent);
+            z-index: 2;
+            transform: scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
         }
 
-        /* Aesthetic Numbering */
+        /* Aesthetic Numbering (Top Right now) */
         .card-meta {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 15px;
+            right: 15px;
             font-family: 'Bodoni Moda', serif;
-            font-style: italic;
-            font-size: 1.2rem;
-            color: #E0D8D6;
-            transition: color 0.3s;
+            font-size: 1rem;
+            color: #E0E0E0;
         }
 
-        .card:hover .card-meta {
-            color: var(--text-dark);
-        }
+        .card:hover .card-meta { color: var(--text-dark); }
 
-        /* Content Styling */
+        /* Label Logic */
         .tag {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border: 1px solid var(--text-accent);
-            padding: 5px 10px;
-            border-radius: 0; /* Sharp edges for luxury */
+            border-bottom: 1px solid var(--text-accent);
+            padding-bottom: 3px;
             color: var(--text-accent);
-            margin-bottom: 20px;
-            background: transparent;
+            margin-bottom: 15px;
         }
-
-        .tag.reel { background-color: var(--text-dark); color: white; border-color: var(--text-dark); }
 
         .card h3 {
             font-family: 'Bodoni Moda', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin: 0 0 10px 0;
             color: var(--text-dark);
             line-height: 1.2;
-            font-weight: 500;
         }
 
         .card p {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             line-height: 1.6;
-            color: #6D5E59;
+            color: #666;
             margin: 0;
-            max-width: 90%;
-            font-weight: 400;
+            width: 85%;
         }
 
-        /* Visual Separators for Rows */
+        /* Row Separators */
         .row-label {
             grid-column: 1 / -1;
             text-align: center;
             margin: 60px 0 20px;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            font-style: italic;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
-            opacity: 0.5;
         }
-
-        .row-label span {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 1rem;
-            font-style: italic;
-            color: var(--text-dark);
-        }
-
+        
         .row-label::before, .row-label::after {
             content: '';
             height: 1px;
-            width: 50px;
-            background-color: var(--text-dark);
+            width: 80px;
+            background: #CCC;
         }
+
+        /* --- SPECIAL CARDS --- */
+        /* Dark Theme for the "ADD" branding */
+        .dark-theme {
+            background-color: #1a1a1a;
+            color: white;
+        }
+        .dark-theme h3, .dark-theme .card-meta { color: white !important; }
+        .dark-theme p { color: #888; }
+        .dark-theme .tag { border-color: #555; color: #888; }
+
 
         /* --- MOBILE --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.5rem; }
             .grid-container {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 20px;
             }
-            .card { aspect-ratio: auto; min-height: 250px; }
+            .card { border: 1px solid #eee; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-area">
-            <img src="logo.png" alt="ADD Logo">
-        </div>
+    <div class="hero">
+        <img src="logo.png" alt="ADD" class="hero-logo">
         <h1>Visual Narrative</h1>
-        <p class="subtitle">Month 01 • Curated Strategy</p>
-    </header>
+        <p>Month 01 Strategy</p>
+    </div>
 
     <div class="grid-wrapper">
         <div class="grid-container">
 
-            <div class="row-label"><span>The Process</span></div>
+            <div class="row-label"><span>05. The Statement</span></div>
 
-            <div class="card">
-                <span class="card-meta">01</span>
-                <span class="tag reel">Reel</span>
-                <h3>Architectural<br>Motion</h3>
-                <p>Fast-paced cuts: Sketching, modeling, hands at work. Pure craft.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-meta">02</span>
-                <span class="tag">Carousel</span>
-                <h3>From Mind<br>to Matter</h3>
-                <p>The Journey: Idea → Sketch → Render → Execution.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-meta">03</span>
-                <span class="tag reel">Reel</span>
-                <h3>Identity:<br>ADD</h3>
-                <p>Cinematic voiceover. Introducing the brand philosophy.</p>
-            </div>
-
-            <div class="row-label"><span>Founder 01</span></div>
-
-            <div class="card">
-                <span class="card-meta">04</span>
-                <span class="tag reel">Reel</span>
-                <h3>The Visionary</h3>
-                <p>Introduction to Founder 1. Narrative voiceover.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-meta">05</span>
-                <span class="tag">Portrait</span>
-                <h3>Founder 1</h3>
-                <p>Editorial photography. Minimalist graphics.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-meta">06</span>
-                <span class="tag reel">Reel</span>
-                <h3>Perspective</h3>
-                <p>Founder 1 discusses their favorite project details.</p>
-            </div>
-
-            <div class="row-label"><span>Founder 02</span></div>
-
-            <div class="card">
-                <span class="card-meta">07</span>
-                <span class="tag reel">Reel</span>
-                <h3>The Architect</h3>
-                <p>Introduction to Founder 2. Narrative voiceover.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-meta">08</span>
-                <span class="tag">Portrait</span>
-                <h3>Founder 2</h3>
-                <p>Editorial photography. Minimalist graphics.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-meta">09</span>
-                <span class="tag reel">Reel</span>
-                <h3>Perspective</h3>
-                <p>Founder 2 discusses their favorite project details.</p>
-            </div>
-
-            <div class="row-label"><span>Founder 03</span></div>
-
-            <div class="card">
-                <span class="card-meta">10</span>
-                <span class="tag reel">Reel</span>
-                <h3>The Designer</h3>
-                <p>Introduction to Founder 3. Narrative voiceover.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-meta">11</span>
-                <span class="tag">Portrait</span>
-                <h3>Founder 3</h3>
-                <p>Editorial photography. Minimalist graphics.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-meta">12</span>
-                <span class="tag reel">Reel</span>
-                <h3>Perspective</h3>
-                <p>Founder 3 discusses their favorite project details.</p>
-            </div>
-
-            <div class="row-label"><span>The Statement</span></div>
-
-            <div class="card" style="background: #2A1B18; color: white;">
-                <span class="card-meta" style="color: rgba(255,255,255,0.2);">13</span>
-                <span class="tag reel" style="background: white; color: #2A1B18; border-color: white;">Reel</span>
-                <h3 style="color: white; font-size: 2rem;">ADD</h3>
-                <p style="color: rgba(255,255,255,0.7);">Team Intro Part 1</p>
+            <div class="card dark-theme">
+                <span class="card-meta">15</span>
+                <span class="tag">Reel</span>
+                <h3>WE ARE</h3>
+                <p>Team Intro Part 2. Bold typography cover.</p>
             </div>
 
             <div class="card">
                 <span class="card-meta">14</span>
                 <span class="tag">Graphic</span>
-                <h3 style="font-size: 3rem; font-style: italic;">ARE</h3>
-                <p>Visual Typography Connector</p>
+                <h3 style="font-size: 3rem;">ARE</h3>
+                <p>Grid Connector Graphic</p>
             </div>
 
-            <div class="card" style="background: #2A1B18; color: white;">
-                <span class="card-meta" style="color: rgba(255,255,255,0.2);">15</span>
-                <span class="tag reel" style="background: white; color: #2A1B18; border-color: white;">Reel</span>
-                <h3 style="color: white; font-size: 2rem;">WE ARE</h3>
-                <p style="color: rgba(255,255,255,0.7);">Team Intro Part 2</p>
+            <div class="card dark-theme">
+                <span class="card-meta">13</span>
+                <span class="tag">Reel</span>
+                <h3>ADD</h3>
+                <p>Team Intro Part 1. Bold typography cover.</p>
+            </div>
+
+
+            <div class="row-label"><span>04. Founder Three</span></div>
+
+            <div class="card">
+                <span class="card-meta">12</span>
+                <span class="tag">Reel</span>
+                <h3>Perspective</h3>
+                <p>Founder 3: Project POV & Insight.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-meta">11</span>
+                <span class="tag">Portrait</span>
+                <h3>The Portrait</h3>
+                <p>High-fashion editorial shot of Founder 3.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-meta">10</span>
+                <span class="tag">Reel</span>
+                <h3>The Intro</h3>
+                <p>Cinematic voiceover introduction.</p>
+            </div>
+
+
+            <div class="row-label"><span>03. Founder Two</span></div>
+
+            <div class="card">
+                <span class="card-meta">09</span>
+                <span class="tag">Reel</span>
+                <h3>Perspective</h3>
+                <p>Founder 2: Project POV & Insight.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-meta">08</span>
+                <span class="tag">Portrait</span>
+                <h3>The Portrait</h3>
+                <p>High-fashion editorial shot of Founder 2.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-meta">07</span>
+                <span class="tag">Reel</span>
+                <h3>The Intro</h3>
+                <p>Cinematic voiceover introduction.</p>
+            </div>
+
+
+            <div class="row-label"><span>02. Founder One</span></div>
+
+            <div class="card">
+                <span class="card-meta">06</span>
+                <span class="tag">Reel</span>
+                <h3>Perspective</h3>
+                <p>Founder 1: Project POV & Insight.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-meta">05</span>
+                <span class="tag">Portrait</span>
+                <h3>The Portrait</h3>
+                <p>High-fashion editorial shot of Founder 1.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-meta">04</span>
+                <span class="tag">Reel</span>
+                <h3>The Intro</h3>
+                <p>Cinematic voiceover introduction.</p>
+            </div>
+
+
+            <div class="row-label"><span>01. The Process</span></div>
+
+            <div class="card">
+                <span class="card-meta">03</span>
+                <span class="tag">Reel</span>
+                <h3>Identity</h3>
+                <p>Voiceover manifesto introducing "ADD".</p>
+            </div>
+
+            <div class="card">
+                <span class="card-meta">02</span>
+                <span class="tag">Carousel</span>
+                <h3>Evolution</h3>
+                <p>Sketch → Render → Reality.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-meta">01</span>
+                <span class="tag">Reel</span>
+                <h3>Motion</h3>
+                <p>Architectural hands at work. Fast paced.</p>
             </div>
 
         </div>
