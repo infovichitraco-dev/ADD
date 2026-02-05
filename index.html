@@ -3,373 +3,385 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADD | Visual Strategy</title>
+    <title>ADD | Visual Architecture</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-color: #Fdfcfb; 
-            --text-primary: #FFFFFF; 
-            --overlay-dark: rgba(20, 15, 13, 0.4); /* Base darkness */
-            --overlay-hover: rgba(20, 15, 13, 0.7); /* Hover darkness */
+            /* LUXURY PALETTE */
+            --bg-color: #F5F4F0; /* "Alabaster" - Warm Stone */
+            --text-color: #FFFFFF;
+            --accent-color: #C5A08A; /* Muted Bronze */
+            --overlay-base: rgba(28, 24, 22, 0.45); /* Dark Espresso Overlay */
+            --overlay-hover: rgba(28, 24, 22, 0.75);
         }
 
         body {
-            font-family: 'Lato', sans-serif;
             background-color: var(--bg-color);
             margin: 0;
             padding: 0;
+            font-family: 'Montserrat', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* --- HEADER --- */
+        /* --- ELEGANT HEADER --- */
         header {
             text-align: center;
-            padding: 50px 20px 40px;
+            padding: 80px 20px 60px;
             max-width: 800px;
         }
 
-        .logo-placeholder img {
-            height: 50px; 
+        .logo-box img {
+            height: 45px;
             width: auto;
-            margin-bottom: 20px;
-            /* Warm Brown Logo Filter */
-            filter: invert(24%) sepia(12%) saturate(827%) hue-rotate(336deg) brightness(96%) contrast(89%);
+            margin-bottom: 30px;
+            /* Filter: Turns logo into a deep, rich brown */
+            filter: invert(13%) sepia(18%) saturate(756%) hue-rotate(349deg) brightness(93%) contrast(90%);
         }
 
         h1 {
-            font-family: 'Italiana', serif;
-            font-size: 2.5rem;
-            letter-spacing: 1px;
-            color: #3E3531;
-            margin: 0;
-            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+            color: #2C2623;
+            margin: 0 0 10px 0;
+            font-weight: 400;
         }
 
         .subtitle {
-            font-size: 0.8rem;
-            letter-spacing: 3px;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: #8D6E63;
-            margin-top: 10px;
-            border-top: 1px solid #E0E0E0;
-            padding-top: 10px;
+            color: #7D7069;
+            border-top: 1px solid #D7D2CB;
+            padding-top: 15px;
             display: inline-block;
         }
 
-        /* --- GRID CONTAINER (WIDER NOW) --- */
-        .grid-container-box {
+        /* --- THE GRID --- */
+        .grid-container {
             width: 100%;
-            max-width: 900px; /* INCREASED from 450px to 900px */
-            background: white;
-            padding: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            margin-bottom: 100px;
+            max-width: 1200px; /* Much wider for that "Editorial" feel */
+            padding: 0 40px 100px;
             box-sizing: border-box;
-        }
-
-        .grid-wrapper {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 4px; /* Slightly larger gap for definition */
+            gap: 5px; /* Extremely tight gap for premium look */
         }
 
-        /* --- THE CARD --- */
+        /* --- CARD DESIGN --- */
         .card {
             position: relative;
-            padding-top: 125%; /* 4:5 Aspect Ratio */
+            width: 100%;
+            padding-top: 125%; /* 4:5 Portrait Aspect Ratio */
+            background-color: #E0E0E0;
             overflow: hidden;
-            background: #E0E0E0; /* Grey placeholder while loading */
             cursor: pointer;
         }
 
-        /* Background Image */
-        .card-bg {
+        /* The Image */
+        .card img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* The Overlay - Always Visible & Darker for readability */
+        /* The Cinematic Overlay (Always Visible) */
         .card-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--overlay-dark);
+            background: var(--overlay-base);
             transition: background 0.4s ease;
             z-index: 1;
         }
 
-        /* Content Center Placement */
+        /* Text Container - CENTERED */
         .card-content {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            padding: 20px;
-            box-sizing: border-box;
             z-index: 2;
-            color: var(--text-primary);
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Vertically Center */
-            align-items: center;     /* Horizontally Center */
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        /* Typography Styles */
+        /* Typography */
         .card h2 {
-            font-family: 'Italiana', serif;
-            font-size: 1.8rem; /* Much Larger */
-            margin: 0 0 10px 0;
-            line-height: 1;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.4); /* Strong shadow for readability */
-            letter-spacing: -0.5px;
+            font-family: 'Cinzel', serif;
+            color: var(--text-color);
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin: 0 0 8px 0;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
             text-transform: uppercase;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
         }
 
         .card p {
-            font-size: 0.75rem;
-            line-height: 1.4;
-            opacity: 0.9;
+            font-family: 'Montserrat', sans-serif;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             margin: 0;
             font-weight: 400;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-top: 1px solid rgba(255,255,255,0.5); /* Aesthetic line above text */
-            padding-top: 10px;
-            display: inline-block;
+            opacity: 1;
         }
 
-        /* Icons & Badges */
+        /* Icons (Top Right) */
         .icon-badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            z-index: 2;
+            top: 15px;
+            right: 15px;
+            z-index: 3;
             color: white;
             font-size: 1rem;
-            opacity: 0.9;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-        }
-
-        .post-idx {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            z-index: 2;
-            font-size: 0.6rem;
-            border: 1px solid rgba(255,255,255,0.6);
-            padding: 3px 6px;
-            color: white;
-            font-family: 'Lato', sans-serif;
             opacity: 0.8;
-            background: rgba(0,0,0,0.2);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
         }
 
-        /* Hover Effects */
-        .card:hover .card-bg { transform: scale(1.1); }
-        .card:hover .card-overlay { background: var(--overlay-hover); }
+        /* Numbering (Top Left) */
+        .number-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 3;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            color: white;
+            opacity: 0.6;
+        }
 
-        /* Mobile Response */
+        /* Special Styling for the "WE ARE ADD" Graphic Posts */
+        .graphic-text {
+            font-size: 3rem !important;
+            letter-spacing: 5px !important;
+            font-weight: 600 !important;
+            border: none !important;
+        }
+
+        /* --- HOVER EFFECTS --- */
+        .card:hover img {
+            transform: scale(1.08); /* Slow, subtle zoom */
+        }
+
+        .card:hover .card-overlay {
+            background: var(--overlay-hover); /* Darkens significantly to make text pop */
+        }
+
+        .card:hover h2 {
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .grid-container-box { max-width: 100%; padding: 0; }
-            .card h2 { font-size: 1.2rem; }
-            .card p { font-size: 0.5rem; display: none; /* Hide small text on mobile grid to keep it clean */ }
+            .grid-container {
+                grid-template-columns: 1fr; /* Stack on mobile */
+                gap: 20px;
+            }
+            .card {
+                padding-top: 100%; /* Square on mobile */
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-placeholder">
+        <div class="logo-box">
             <img src="logo.png" alt="ADD Logo">
         </div>
-        <h1>Month One</h1>
-        <div class="subtitle">Grid Strategy Preview</div>
+        <h1>Month I: Origins</h1>
+        <div class="subtitle">Visual Strategy & Content Architecture</div>
     </header>
 
-    <div class="grid-container-box">
-        <div class="grid-wrapper">
+    <div class="grid-container">
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">15</div>
-                <i class="fa-solid fa-play icon-badge"></i>
-                <div class="card-content">
-                    <h2>WE ARE</h2>
-                    <p>Team Intro II</p>
-                </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">15</div>
+            <i class="fa-solid fa-play icon-badge"></i>
+            <div class="card-content">
+                <h2 class="graphic-text">WE ARE</h2>
+                <p>The Manifesto</p>
             </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1599690925058-90e1a0b368db?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay" style="background: rgba(42, 27, 24, 0.7);"></div>
-                <div class="post-idx">14</div>
-                <div class="card-content">
-                    <h2 style="font-style: italic; font-size: 2.5rem;">ARE</h2>
-                    <p>Visual Bridge</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">13</div>
-                <i class="fa-solid fa-play icon-badge"></i>
-                <div class="card-content">
-                    <h2>ADD</h2>
-                    <p>Team Intro I</p>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">12</div>
-                <i class="fa-solid fa-play icon-badge"></i>
-                <div class="card-content">
-                    <h2>F3 POV</h2>
-                    <p>Project Details</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">11</div>
-                <div class="card-content">
-                    <h2>FOUNDER<br>3</h2>
-                    <p>Editorial Shot</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">10</div>
-                <i class="fa-solid fa-play icon-badge"></i>
-                <div class="card-content">
-                    <h2>STORY</h2>
-                    <p>Founder 3 Intro</p>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1606744824163-985d376605aa?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">09</div>
-                <i class="fa-solid fa-play icon-badge"></i>
-                <div class="card-content">
-                    <h2>F2 POV</h2>
-                    <p>Project Details</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1558008258-3256797b43f3?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">08</div>
-                <div class="card-content">
-                    <h2>FOUNDER<br>2</h2>
-                    <p>Editorial Shot</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">07</div>
-                <i class="fa-solid fa-play icon-badge"></i>
-                <div class="card-content">
-                    <h2>STORY</h2>
-                    <p>Founder 2 Intro</p>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1616486029423-aaa478965c96?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">06</div>
-                <i class="fa-solid fa-play icon-badge"></i>
-                <div class="card-content">
-                    <h2>F1 POV</h2>
-                    <p>Project Details</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">05</div>
-                <div class="card-content">
-                    <h2>FOUNDER<br>1</h2>
-                    <p>Editorial Shot</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1633505899100-30232d3cb50c?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">04</div>
-                <i class="fa-solid fa-play icon-badge"></i>
-                <div class="card-content">
-                    <h2>STORY</h2>
-                    <p>Founder 1 Intro</p>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1634148657688-66299b8b2e11?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">03</div>
-                <i class="fa-solid fa-play icon-badge"></i>
-                <div class="card-content">
-                    <h2>INTRO</h2>
-                    <p>Brand Philosophy</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1593466107383-7c2a7dbd5448?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">02</div>
-                <i class="fa-solid fa-layer-group icon-badge"></i>
-                <div class="card-content">
-                    <h2>PROCESS</h2>
-                    <p>Concept to Build</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1598369528994-681c62b48995?auto=format&fit=crop&w=600&q=80" class="card-bg">
-                <div class="card-overlay"></div>
-                <div class="post-idx">01</div>
-                <i class="fa-solid fa-play icon-badge"></i>
-                <div class="card-content">
-                    <h2>CRAFT</h2>
-                    <p>Architects at Work</p>
-                </div>
-            </div>
-
         </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay" style="background:rgba(28,24,22,0.8)"></div>
+            <div class="number-badge">14</div>
+            <div class="card-content">
+                <h2 class="graphic-text" style="font-style:italic; font-family:'Times New Roman', serif;">ARE</h2>
+                <p>Visual Bridge</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">13</div>
+            <i class="fa-solid fa-play icon-badge"></i>
+            <div class="card-content">
+                <h2 class="graphic-text">ADD</h2>
+                <p>The Introduction</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">12</div>
+            <i class="fa-solid fa-play icon-badge"></i>
+            <div class="card-content">
+                <h2>Perspective III</h2>
+                <p>Signature Project Details</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">11</div>
+            <div class="card-content">
+                <h2>The Director</h2>
+                <p>Founder III Profile</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1628143958739-84728564a4b2?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">10</div>
+            <i class="fa-solid fa-play icon-badge"></i>
+            <div class="card-content">
+                <h2>Origins</h2>
+                <p>The Story of Founder III</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">09</div>
+            <i class="fa-solid fa-play icon-badge"></i>
+            <div class="card-content">
+                <h2>Perspective II</h2>
+                <p>Signature Project Details</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">08</div>
+            <div class="card-content">
+                <h2>The Architect</h2>
+                <p>Founder II Profile</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">07</div>
+            <i class="fa-solid fa-play icon-badge"></i>
+            <div class="card-content">
+                <h2>Origins</h2>
+                <p>The Story of Founder II</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1616594039964-40891a9139f4?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">06</div>
+            <i class="fa-solid fa-play icon-badge"></i>
+            <div class="card-content">
+                <h2>Perspective I</h2>
+                <p>Signature Project Details</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">05</div>
+            <div class="card-content">
+                <h2>The Visionary</h2>
+                <p>Founder I Profile</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">04</div>
+            <i class="fa-solid fa-play icon-badge"></i>
+            <div class="card-content">
+                <h2>Origins</h2>
+                <p>The Story of Founder I</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1634148657688-66299b8b2e11?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">03</div>
+            <i class="fa-solid fa-play icon-badge"></i>
+            <div class="card-content">
+                <h2>Genesis</h2>
+                <p>Brand Philosophy</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1593466107383-7c2a7dbd5448?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">02</div>
+            <i class="fa-solid fa-layer-group icon-badge"></i>
+            <div class="card-content">
+                <h2>The Process</h2>
+                <p>From Concept to Reality</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1621847468516-1ed5d0df56fe?auto=format&fit=crop&w=800&q=80">
+            <div class="card-overlay"></div>
+            <div class="number-badge">01</div>
+            <i class="fa-solid fa-play icon-badge"></i>
+            <div class="card-content">
+                <h2>Craftsmanship</h2>
+                <p>The Art of Architecture</p>
+            </div>
+        </div>
+
     </div>
 
 </body>
