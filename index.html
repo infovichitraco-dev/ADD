@@ -11,8 +11,10 @@
 
     <style>
         :root {
+            /* BRAND PALETTE - Interior Design Warmth */
             --bg-color: #Fdfcfb; 
-            --text-primary: #FFFFFF; 
+            --text-primary: #FFFFFF; /* White text for overlay */
+            --overlay-color: rgba(62, 53, 49, 0.6); /* Warm dark brown overlay */
             --accent-gold: #C5A08A;
         }
 
@@ -37,7 +39,7 @@
             height: 50px; 
             width: auto;
             margin-bottom: 20px;
-            /* Filter to make logo warm brown */
+            /* This filter turns a black logo into a warm brown one */
             filter: invert(24%) sepia(12%) saturate(827%) hue-rotate(336deg) brightness(96%) contrast(89%);
         }
 
@@ -64,7 +66,7 @@
         /* --- GRID CONTAINER --- */
         .phone-mockup {
             width: 100%;
-            max-width: 450px; 
+            max-width: 450px; /* Constrained width for that "Phone Feed" look */
             background: white;
             padding: 10px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.08);
@@ -74,13 +76,13 @@
         .grid-wrapper {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3px; 
+            gap: 3px; /* Tiny gap, ultra premium feel */
         }
 
         /* --- THE CARD --- */
         .card {
             position: relative;
-            padding-top: 125%; /* 4:5 Aspect Ratio */
+            padding-top: 125%; /* 4:5 Aspect Ratio (Portrait) - Standard for Reels/Posts */
             overflow: hidden;
             background: #EFEBE9;
             cursor: pointer;
@@ -95,110 +97,98 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            transition: transform 0.7s ease;
         }
 
-        /* The Overlay - Always Visible now */
+        /* The Dark Overlay */
         .card-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(42, 27, 24, 0.35); /* Base darkness */
-            transition: background 0.4s ease;
+            background: linear-gradient(to top, rgba(42, 27, 24, 0.9) 0%, rgba(42, 27, 24, 0.2) 60%);
             z-index: 1;
         }
 
-        /* Content inside the card - Centered and Filling Space */
+        /* Content inside the card */
         .card-content {
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            padding: 15px;
+            padding: 15px 10px;
             box-sizing: border-box;
             z-index: 2;
             color: var(--text-primary);
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Center Vertically */
-            align-items: center;     /* Center Horizontally */
-            text-align: center;
+            text-align: left;
         }
 
         /* Typography Styles */
         .card h2 {
             font-family: 'Italiana', serif;
-            font-size: 1.4rem; /* Larger Title */
-            margin: 0 0 8px 0;
-            line-height: 1;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            letter-spacing: -0.5px;
-            transition: transform 0.3s ease;
+            font-size: 1.1rem;
+            margin: 0 0 5px 0;
+            line-height: 1.1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .card p {
-            font-size: 0.6rem;
-            line-height: 1.4;
-            opacity: 0.85; /* High visibility by default */
+            font-size: 0.55rem;
+            line-height: 1.3;
+            opacity: 0.9;
             margin: 0;
-            font-weight: 400;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            max-width: 90%;
+            font-weight: 300;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Limits text to 2 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        /* Top Right Icons */
+        /* Top Right Icons (Reel/Carousel) */
         .icon-badge {
             position: absolute;
-            top: 8px;
-            right: 8px;
+            top: 10px;
+            right: 10px;
             z-index: 2;
             color: white;
-            font-size: 0.8rem;
-            opacity: 0.8;
+            font-size: 0.9rem;
             text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
         /* Post Number Label */
         .post-idx {
             position: absolute;
-            top: 8px;
-            left: 8px;
+            top: 10px;
+            left: 10px;
             z-index: 2;
-            font-size: 0.4rem;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 2px 4px;
+            font-size: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 2px 5px;
             color: white;
             font-family: 'Lato', sans-serif;
-            opacity: 0.7;
         }
 
-        /* Interactive Hover States */
+        /* Interactive Hover */
         .card:hover .card-bg {
             transform: scale(1.1);
         }
-        
         .card:hover .card-overlay {
-            background: rgba(42, 27, 24, 0.65); /* Darker on hover */
+            background: rgba(42, 27, 24, 0.85); /* Darkens on hover to make text pop more */
         }
 
-        .card:hover h2 {
-            transform: translateY(-2px);
-        }
-        
-        .card:hover p {
-            opacity: 1;
-            color: #fff;
-        }
-
-        /* Special Large Text for Graphic Posts */
+        /* Typography Graphic Helper */
         .graphic-text {
             font-family: 'Italiana', serif;
-            font-size: 2.8rem !important;
-            opacity: 1 !important;
+            font-size: 2.5rem !important;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0 !important;
+            opacity: 0.9;
         }
 
     </style>
@@ -209,8 +199,8 @@
         <div class="logo-placeholder">
             <img src="logo.png" alt="Client Logo">
         </div>
-        <h1>Month One</h1>
-        <div class="subtitle">Grid Strategy Preview</div>
+        <h1>Content Architecture</h1>
+        <div class="subtitle">Month One Strategy</div>
     </header>
 
     <div class="phone-mockup">
@@ -223,18 +213,16 @@
                 <div class="post-idx">15</div>
                 <i class="fa-solid fa-play icon-badge"></i>
                 <div class="card-content">
-                    <h2 class="graphic-text">WE ARE</h2>
-                    <p>Team Intro II</p>
+                    <h2 class="graphic-text">WE ARE</h2> <div style="position: absolute; bottom: 10px; width: 100%; text-align:center; font-size: 0.5rem; opacity: 0.7;">Team Intro II</div>
                 </div>
             </div>
 
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1599690925058-90e1a0b368db?q=80&w=400&auto=format&fit=crop" class="card-bg">
-                <div class="card-overlay" style="background: rgba(42, 27, 24, 0.8);"></div>
+                <div class="card-overlay" style="background: rgba(42, 27, 24, 0.9);"></div>
                 <div class="post-idx">14</div>
                 <div class="card-content">
-                    <h2 class="graphic-text" style="font-style: italic;">ARE</h2>
-                    <p>Visual Bridge</p>
+                    <h2 class="graphic-text" style="font-style: italic;">ARE</h2> <div style="position: absolute; bottom: 10px; width: 100%; text-align:center; font-size: 0.5rem; opacity: 0.7;">Typography Bridge</div>
                 </div>
             </div>
 
@@ -244,8 +232,7 @@
                 <div class="post-idx">13</div>
                 <i class="fa-solid fa-play icon-badge"></i>
                 <div class="card-content">
-                    <h2 class="graphic-text">ADD</h2>
-                    <p>Team Intro I</p>
+                    <h2 class="graphic-text">ADD</h2> <div style="position: absolute; bottom: 10px; width: 100%; text-align:center; font-size: 0.5rem; opacity: 0.7;">Team Intro I</div>
                 </div>
             </div>
 
@@ -256,29 +243,29 @@
                 <div class="post-idx">12</div>
                 <i class="fa-solid fa-play icon-badge"></i>
                 <div class="card-content">
-                    <h2>FOUNDER 3<br>POV</h2>
-                    <p>Project Details</p>
+                    <h2>Founder 3 POV</h2>
+                    <p>Talking about their favorite project details.</p>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1481214110143-ed630356e1bb?q=80&w=400&auto=format&fit=crop" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">11</div>
                 <div class="card-content">
-                    <h2>PORTRAIT</h2>
-                    <p>Editorial Shot</p>
+                    <h2>Founder 3</h2>
+                    <p>Portrait with aesthetic graphics matching feed.</p>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?q=80&w=400&auto=format&fit=crop" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">10</div>
                 <i class="fa-solid fa-play icon-badge"></i>
                 <div class="card-content">
-                    <h2>THE<br>STORY</h2>
-                    <p>Founder 3 Intro</p>
+                    <h2>Intro Story</h2>
+                    <p>Founder 3 voiceover script intro.</p>
                 </div>
             </div>
 
@@ -289,8 +276,8 @@
                 <div class="post-idx">09</div>
                 <i class="fa-solid fa-play icon-badge"></i>
                 <div class="card-content">
-                    <h2>FOUNDER 2<br>POV</h2>
-                    <p>Project Details</p>
+                    <h2>Founder 2 POV</h2>
+                    <p>Project insights and personal perspective.</p>
                 </div>
             </div>
 
@@ -299,8 +286,8 @@
                 <div class="card-overlay"></div>
                 <div class="post-idx">08</div>
                 <div class="card-content">
-                    <h2>PORTRAIT</h2>
-                    <p>Editorial Shot</p>
+                    <h2>Founder 2</h2>
+                    <p>Portrait with aesthetic graphics matching feed.</p>
                 </div>
             </div>
 
@@ -310,8 +297,8 @@
                 <div class="post-idx">07</div>
                 <i class="fa-solid fa-play icon-badge"></i>
                 <div class="card-content">
-                    <h2>THE<br>STORY</h2>
-                    <p>Founder 2 Intro</p>
+                    <h2>Intro Story</h2>
+                    <p>Founder 2 voiceover script intro.</p>
                 </div>
             </div>
 
@@ -322,8 +309,8 @@
                 <div class="post-idx">06</div>
                 <i class="fa-solid fa-play icon-badge"></i>
                 <div class="card-content">
-                    <h2>FOUNDER 1<br>POV</h2>
-                    <p>Project Details</p>
+                    <h2>Founder 1 POV</h2>
+                    <p>Talking about their favorite project details.</p>
                 </div>
             </div>
 
@@ -332,8 +319,8 @@
                 <div class="card-overlay"></div>
                 <div class="post-idx">05</div>
                 <div class="card-content">
-                    <h2>PORTRAIT</h2>
-                    <p>Editorial Shot</p>
+                    <h2>Founder 1</h2>
+                    <p>Portrait with aesthetic graphics matching feed.</p>
                 </div>
             </div>
 
@@ -343,8 +330,8 @@
                 <div class="post-idx">04</div>
                 <i class="fa-solid fa-play icon-badge"></i>
                 <div class="card-content">
-                    <h2>THE<br>STORY</h2>
-                    <p>Founder 1 Intro</p>
+                    <h2>Intro Story</h2>
+                    <p>Founder 1 voiceover script intro.</p>
                 </div>
             </div>
 
@@ -355,8 +342,8 @@
                 <div class="post-idx">03</div>
                 <i class="fa-solid fa-play icon-badge"></i>
                 <div class="card-content">
-                    <h2>ADD<br>INTRO</h2>
-                    <p>Brand Philosophy</p>
+                    <h2>Intro: ADD</h2>
+                    <p>Voiceover video introducing the brand.</p>
                 </div>
             </div>
 
@@ -364,10 +351,9 @@
                 <img src="https://images.unsplash.com/photo-1593466107383-7c2a7dbd5448?q=80&w=400&auto=format&fit=crop" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">02</div>
-                <i class="fa-solid fa-layer-group icon-badge"></i>
-                <div class="card-content">
-                    <h2>PROCESS</h2>
-                    <p>Idea to Reality</p>
+                <i class="fa-solid fa-layer-group icon-badge"></i> <div class="card-content">
+                    <h2>The Process</h2>
+                    <p>Idea > Sketch > Render > Model > Execution.</p>
                 </div>
             </div>
 
@@ -377,8 +363,8 @@
                 <div class="post-idx">01</div>
                 <i class="fa-solid fa-play icon-badge"></i>
                 <div class="card-content">
-                    <h2>THE<br>CRAFT</h2>
-                    <p>Architects at Work</p>
+                    <h2>The Hands</h2>
+                    <p>Fast paced: Sketching, models, movement.</p>
                 </div>
             </div>
 
