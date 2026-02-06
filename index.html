@@ -37,7 +37,6 @@
             height: 50px; 
             width: auto;
             margin-bottom: 20px;
-            /* Filter to make logo warm brown */
             filter: invert(24%) sepia(12%) saturate(827%) hue-rotate(336deg) brightness(96%) contrast(89%);
         }
 
@@ -98,7 +97,7 @@
             transition: transform 0.8s ease;
         }
 
-        /* The Overlay - Always Visible now */
+        /* The Overlay */
         .card-overlay {
             position: absolute;
             top: 0;
@@ -110,7 +109,7 @@
             z-index: 1;
         }
 
-        /* Content inside the card - Centered and Filling Space */
+        /* Content inside the card */
         .card-content {
             position: absolute;
             top: 0;
@@ -123,15 +122,15 @@
             color: var(--text-primary);
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Center Vertically */
-            align-items: center;     /* Center Horizontally */
+            justify-content: center;
+            align-items: center; 
             text-align: center;
         }
 
         /* Typography Styles */
         .card h2 {
             font-family: 'Italiana', serif;
-            font-size: 1.4rem; /* Larger Title */
+            font-size: 1.4rem;
             margin: 0 0 8px 0;
             line-height: 1;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
@@ -142,7 +141,7 @@
         .card p {
             font-size: 0.6rem;
             line-height: 1.4;
-            opacity: 0.85; /* High visibility by default */
+            opacity: 0.85;
             margin: 0;
             font-weight: 400;
             letter-spacing: 1px;
@@ -182,7 +181,7 @@
         }
         
         .card:hover .card-overlay {
-            background: rgba(42, 27, 24, 0.65); /* Darker on hover */
+            background: rgba(42, 27, 24, 0.65);
         }
 
         .card:hover h2 {
@@ -194,7 +193,7 @@
             color: #fff;
         }
 
-        /* Special Large Text for Graphic Posts */
+        /* Special Large Text */
         .graphic-text {
             font-family: 'Italiana', serif;
             font-size: 2.8rem !important;
@@ -249,7 +248,6 @@
                 </div>
             </div>
 
-
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=400&q=80" class="card-bg">
                 <div class="card-overlay"></div>
@@ -272,7 +270,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1628143958739-84728564a4b2?auto=format&fit=crop&w=400&q=80" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=400&q=80" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">10</div>
                 <i class="fa-solid fa-play icon-badge"></i>
@@ -281,7 +279,6 @@
                     <p>Founder 3 Intro</p>
                 </div>
             </div>
-
 
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80" class="card-bg">
@@ -315,7 +312,6 @@
                 </div>
             </div>
 
-
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1616594039964-40891a9139f4?auto=format&fit=crop&w=400&q=80" class="card-bg">
                 <div class="card-overlay"></div>
@@ -347,7 +343,6 @@
                     <p>Founder 1 Intro</p>
                 </div>
             </div>
-
 
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1634148657688-66299b8b2e11?auto=format&fit=crop&w=400&q=80" class="card-bg">
