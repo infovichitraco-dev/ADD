@@ -98,19 +98,19 @@
             transition: transform 0.8s ease;
         }
 
-        /* The Overlay - Always Visible now */
+        /* The Overlay - Always Visible */
         .card-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(42, 27, 24, 0.35); /* Base darkness */
+            background: rgba(42, 27, 24, 0.4); /* Base darkness for readability */
             transition: background 0.4s ease;
             z-index: 1;
         }
 
-        /* Content inside the card - Centered and Filling Space */
+        /* Content inside the card */
         .card-content {
             position: absolute;
             top: 0;
@@ -131,10 +131,10 @@
         /* Typography Styles */
         .card h2 {
             font-family: 'Italiana', serif;
-            font-size: 1.4rem; /* Larger Title */
+            font-size: 1.4rem; 
             margin: 0 0 8px 0;
             line-height: 1;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
             letter-spacing: -0.5px;
             transition: transform 0.3s ease;
         }
@@ -142,12 +142,13 @@
         .card p {
             font-size: 0.6rem;
             line-height: 1.4;
-            opacity: 0.85; /* High visibility by default */
+            opacity: 0.9; 
             margin: 0;
             font-weight: 400;
             letter-spacing: 1px;
             text-transform: uppercase;
             max-width: 90%;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
         }
 
         /* Top Right Icons */
@@ -158,7 +159,7 @@
             z-index: 2;
             color: white;
             font-size: 0.8rem;
-            opacity: 0.8;
+            opacity: 0.9;
             text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
@@ -169,11 +170,11 @@
             left: 8px;
             z-index: 2;
             font-size: 0.4rem;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.4);
             padding: 2px 4px;
             color: white;
             font-family: 'Lato', sans-serif;
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         /* Interactive Hover States */
@@ -218,7 +219,7 @@
         <div class="grid-wrapper">
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1617103996702-96ff29b1c467?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">15</div>
                 <i class="fa-solid fa-play icon-badge"></i>
@@ -229,7 +230,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1599690925058-90e1a0b368db?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1604147706320-98b01e75270c?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay" style="background: rgba(42, 27, 24, 0.8);"></div>
                 <div class="post-idx">14</div>
                 <div class="card-content">
@@ -239,7 +240,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1594913785162-e6785e6e4f1e?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">13</div>
                 <i class="fa-solid fa-play icon-badge"></i>
@@ -251,7 +252,7 @@
 
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">12</div>
                 <i class="fa-solid fa-play icon-badge"></i>
@@ -262,7 +263,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1500917293048-808801f9d6cd?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">11</div>
                 <div class="card-content">
@@ -272,7 +273,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">10</div>
                 <i class="fa-solid fa-play icon-badge"></i>
@@ -284,7 +285,7 @@
 
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">09</div>
                 <i class="fa-solid fa-play icon-badge"></i>
@@ -295,7 +296,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">08</div>
                 <div class="card-content">
@@ -305,7 +306,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">07</div>
                 <i class="fa-solid fa-play icon-badge"></i>
@@ -317,7 +318,7 @@
 
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1616486029423-aaa478965c96?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">06</div>
                 <i class="fa-solid fa-play icon-badge"></i>
@@ -328,7 +329,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1445053023192-8d45cb5d2604?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">05</div>
                 <div class="card-content">
@@ -338,7 +339,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1633505899100-30232d3cb50c?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">04</div>
                 <i class="fa-solid fa-play icon-badge"></i>
@@ -350,7 +351,7 @@
 
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1634148657688-66299b8b2e11?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">03</div>
                 <i class="fa-solid fa-play icon-badge"></i>
@@ -361,7 +362,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1593466107383-7c2a7dbd5448?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1593466107383-7c2a7dbd5448?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">02</div>
                 <i class="fa-solid fa-layer-group icon-badge"></i>
@@ -372,7 +373,7 @@
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1598369528994-681c62b48995?q=80&w=400&auto=format&fit=crop" class="card-bg">
+                <img src="https://images.unsplash.com/photo-1598369528994-681c62b48995?auto=format&fit=crop&w=500&q=60" class="card-bg">
                 <div class="card-overlay"></div>
                 <div class="post-idx">01</div>
                 <i class="fa-solid fa-play icon-badge"></i>
